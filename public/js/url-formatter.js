@@ -3,45 +3,30 @@
 
 "use strict";
 
-var REGEX_GIST_URL = /^(https?):\/\/gist\.githubusercontent\.com\/(.+?\/[0-9a-f]+\/raw\/(?:[0-9a-f]+\/)?.+\..+)$/i;
-var REGEX_RAW_URL  = /^(https?):\/\/raw\.github(?:usercontent)?\.com\/([^\/]+\/[^\/]+\/[^\/]+|[0-9A-Za-z-]+\/[0-9a-f]+\/raw)\/(.+\..+)/i;
-var REGEX_REPO_URL = /^(https?):\/\/github\.com\/(.+?)\/(.+?)\/(?:(?:blob|raw)\/)?(.+?\/.+)/i;
+var REGEX_REPO_URL = /^(https?):\/\/gitlab\.isb-sib\.ch\/(.+?)\/(.+?)\/(?:(?:blob|raw)\/)?(.+?\/.+)/i;
 
-var devEl  = doc.getElementById('url-dev');
-var prodEl = doc.getElementById('url-prod');
+var linkToRawSIB  = doc.getElementById('url-dev');
 var urlEl  = doc.getElementById('url');
 
-urlEl.addEventListener('input', function () {
+urlEl.value = "https://gitlab.isb-sib.ch/calipho/nextprot-viewers/blob/develop/peptides/app/index.html";
+setNewUrl();
+    
+function setNewUrl(){
     var url = urlEl.value.trim();
 
-    if (REGEX_RAW_URL.test(url)) {
+ 
+    if (REGEX_REPO_URL.test(url)) {
+        
         urlEl.classList.remove('invalid');
         urlEl.classList.add('valid');
 
-        devEl.value  = url.replace(REGEX_RAW_URL, '$1://' + devDomain + '/$2/$3');
-        prodEl.value = url.replace(REGEX_RAW_URL, '$1://' + cdnDomain + '/$2/$3');
+        linkToRawSIB.href  = url.replace(REGEX_REPO_URL, window.location.origin + '/$2/$3/raw/$4');
+        linkToRawSIB.text  = url.replace(REGEX_REPO_URL, window.location.origin + '/$2/$3/raw/$4');
 
-        devEl.classList.add('valid');
-        prodEl.classList.add('valid');
-    } else if (REGEX_REPO_URL.test(url)) {
-        urlEl.classList.remove('invalid');
-        urlEl.classList.add('valid');
+        linkToRawSIB.classList.remove('not-active');
+        linkToRawSIB.classList.add('active');
+    }else {
 
-        devEl.value  = url.replace(REGEX_REPO_URL, '$1://' + devDomain + '/$2/$3/$4');
-        prodEl.value = url.replace(REGEX_REPO_URL, '$1://' + cdnDomain + '/$2/$3/$4');
-
-        devEl.classList.add('valid');
-        prodEl.classList.add('valid');
-    } else if (REGEX_GIST_URL.test(url)) {
-        urlEl.classList.remove('invalid');
-        urlEl.classList.add('valid');
-
-        devEl.value  = url.replace(REGEX_GIST_URL, '$1://' + devDomain + '/$2');
-        prodEl.value = url.replace(REGEX_GIST_URL, '$1://' + cdnDomain + '/$2');
-
-        devEl.classList.add('valid');
-        prodEl.classList.add('valid');
-    } else {
         urlEl.classList.remove('valid');
 
         if (url.length) {
@@ -50,16 +35,17 @@ urlEl.addEventListener('input', function () {
             urlEl.classList.remove('invalid');
         }
 
-        devEl.value  = '';
-        prodEl.value = '';
-
-        devEl.classList.remove('valid');
-        prodEl.classList.remove('valid');
+        linkToRawSIB.value  = '';
+        linkToRawSIB.classList.add('not-active');
     }
+    
+}
+    
+urlEl.addEventListener('input', function () {
+    setNewUrl();
 }, false);
 
-devEl.addEventListener('focus', onFocus);
-prodEl.addEventListener('focus', onFocus);
+linkToRawSIB.addEventListener('focus', onFocus);
 
 function onFocus(e) {
     setTimeout(function () {

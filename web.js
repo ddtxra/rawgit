@@ -65,21 +65,6 @@ app.get('/stats.html', function (req, res) {
 app.get('*/google[0-9a-f]{16}.html',
     middleware.error403);
 
-// Public or private gist.
-app.route(/^\/[0-9A-Za-z-]+\/[0-9a-f]+\/raw\/?/)
-    .all(
-        middleware.cdn,
-        middleware.stats,
-        middleware.security,
-        middleware.noRobots,
-        middleware.autoThrottle,
-        middleware.accessControl
-    )
-    .get(
-        middleware.fileRedirect('https://gist.githubusercontent.com'),
-        middleware.proxyPath('https://gist.githubusercontent.com')
-    );
-
 // Repo file.
 app.route('/:user/:repo/:branch/*')
     .all(
@@ -91,8 +76,8 @@ app.route('/:user/:repo/:branch/*')
         middleware.accessControl
     )
     .get(
-        middleware.fileRedirect('https://raw.githubusercontent.com'),
-        middleware.proxyPath('https://raw.githubusercontent.com')
+        middleware.fileRedirect('https://gitlab.isb-sib.ch/'),
+        middleware.proxyPath('https://gitlab.isb-sib.ch/')
     );
 
 // Stats API.

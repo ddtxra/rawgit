@@ -219,6 +219,20 @@ pre { overflow-x: auto; }
     border-color: #98f9a0;
 }
 
+
+.active {
+   color: darkgreen;
+   pointer-events: default;
+   text-decoration: default;
+}
+
+.not-active {
+   color: darkred;
+   pointer-events: none;
+   cursor: default;
+   text-decoration: none;
+}
+
 /* -- Footer ---------------------------------------------------------------- */
 .ft {
     border-top: 1px solid #efefef;
@@ -230,4 +244,8 @@ pre { overflow-x: auto; }
 .ft a {
     color: inherit;
     text-decoration: underline;
+}
+
+#pro-div {
+    display: none;
 }
