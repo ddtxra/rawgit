@@ -8,7 +8,7 @@ var REGEX_REPO_URL = /^(https?):\/\/gitlab\.isb-sib\.ch\/(.+?)\/(.+?)\/(?:(?:blo
 var linkToRawSIB  = doc.getElementById('url-dev');
 var urlEl  = doc.getElementById('url');
 
-urlEl.value = "https://gitlab.isb-sib.ch/calipho/nextprot-viewers/blob/develop/peptides/app/index.html";
+urlEl.value = "https://gitlab.isb-sib.ch/calipho/nextprot-viewers/blob/develop/sequence/app/index.html";
 setNewUrl();
     
 function setNewUrl(){
