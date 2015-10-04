@@ -1,7 +1,7 @@
-RawGit
+RawGit for GitLab
 ======
 
-This is the source code behind <https://rawgit.com/>.
+This is an adpation of rawgit to work with GitLab.
 
 
 Installing
