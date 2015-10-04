@@ -1,7 +1,7 @@
 RawGit for GitLab
 ======
 
-This is an adpation of rawgit to work with [GitLab](https://gitlab.isb-sib.ch/).
+This is an adpation of [rawgit](www.rawgit.com) to work with [GitLab](https://gitlab.isb-sib.ch/) in an organization.
 
 
 Installing
