@@ -1,27 +1,19 @@
 RawGit for GitLab
 ======
 
-This is an adpation of [rawgit](https://rawgit.com/) to work with [GitLab](https://gitlab.isb-sib.ch/) in an organization.
+This is an adpation of [rawgit](https://rawgit.com/) to work with [SIB GitLab](https://gitlab.isb-sib.ch/).
 
+You can edit web.js to point to your gitlab domain.
 
-Installing
-----------
-
-1. Install Node.js or io.js.
-
-2. Clone this git repo (fork it first if you plan to make changes).
-
-        git clone git://github.com/rgrove/rawgit.git
-
-3. Install dependencies.
+1. Install dependencies.
 
         cd rawgit && npm install
 
-4. Start the local server.
+2. Start the local server.
 
         npm start
 
-5. Browse to <http://localhost:5000/> and you should see RawGit in action.
+3. Browse to <http://localhost:5000/> and you should see RawGit in action.
 
 
 Running Tests
