@@ -1,6 +1,13 @@
 RawGit for GitLab
 ======
 
+## Build and run with Docker
+
+```shell
+docker build -t sibrawgit .
+docker run -d -p 5000:5000 sibrawgit:latest
+```
+
 This is an adpation of [rawgit](https://rawgit.com/) to work with [SIB GitLab](https://gitlab.isb-sib.ch/).
 
 You can edit web.js to point to your gitlab domain.
